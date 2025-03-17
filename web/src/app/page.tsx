@@ -1,23 +1,26 @@
 import { QuoteCard } from "@/components/quote-card";
+import { Quote } from "../../../core/interfaces/Quote";
+import { Average } from "../../../core/interfaces/Average";
+import { Slippage } from "../../../core/interfaces/Slippage";
 
 const quotesMock = [
   { source: "Nubank", sell_price: 144, buy_price: 140.3 },
   { source: "Wise", sell_price: 143, buy_price: 140.8 },
   { source: "Nomad", sell_price: 145, buy_price: 141.3 },
-];
+] as Quote[];
 
 const averageMock = {
   average_sell_price: 144,
   average_buy_price: 140.9,
-};
+} as Average;
 
 const slippageMock = [
   { source: "Nubank", sell_price_slippage: 0.0, buy_price_slippage: -0.06 },
   { source: "Wise", sell_price_slippage: -0.04, buy_price_slippage: -0.06 },
   { source: "Nomad", sell_price_slippage: 0.06, buy_price_slippage: 0.08 },
-];
+] as Slippage[];
 
-function combineData(quotes: any[], average: any, slippage: any[]) {
+function mergeData(quotes: Quote[], average: Average, slippage: Slippage[]) {
   return quotes.map((quote) => {
     const slippageData = slippage.find((s) => s.source === quote.source);
 
@@ -33,7 +36,7 @@ function combineData(quotes: any[], average: any, slippage: any[]) {
   });
 }
 
-const combinedData = combineData(quotesMock, averageMock, slippageMock);
+const combinedData = mergeData(quotesMock, averageMock, slippageMock);
 
 export default function Home() {
   return (
