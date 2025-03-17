@@ -1,10 +1,9 @@
 import { MenuItem } from "./menu-item";
 
 const items = [
-  { title: "Home", href: "/", selected: true },
-  { title: "Quotes", href: "/" },
-  { title: "Average", href: "/" },
-  { title: "Slippage", href: "/" },
+  { title: "Cotações", href: "/", selected: true },
+  { title: "Sobre", href: "/about" },
+  { title: "Contato", href: "/contact" },
 ];
 
 export function MenuBar() {
