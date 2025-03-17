@@ -1,4 +1,4 @@
-import { Card } from "@/components/card";
+import { QuoteCard } from "@/components/quote-card";
 
 const quotesMock = [
   { source: "Nubank", sell_price: 144, buy_price: 140.3 },
@@ -42,13 +42,14 @@ export default function Home() {
       style={{ backgroundColor: "var(--bg-primary)" }}
     >
       {combinedData.map((data, index) => (
-        <Card
+        <QuoteCard
           key={index}
           buyPrice={data.buyPrice}
           sellPrice={data.sellPrice}
           source={data.source}
           buyPriceSlippage={data.buyPriceSlippage}
           sellPriceSlippage={data.sellPriceSlippage}
+          updatedAt={new Date().toISOString()}
         />
       ))}
     </main>
