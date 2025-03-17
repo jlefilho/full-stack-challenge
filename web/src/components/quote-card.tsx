@@ -1,4 +1,8 @@
-import { FaSync } from "react-icons/fa";
+import {
+  FaArrowAltCircleDown,
+  FaArrowAltCircleUp,
+  FaSync,
+} from "react-icons/fa";
 
 interface QuoteCardProps {
   source: string;
@@ -51,33 +55,41 @@ export function QuoteCard({
       <div className="flex flex-col gap-3 mt-4">
         <span className="text-sm text-gray-400">BRL/USD</span>
 
-        <div className="flex justify-between">
-          <div className="flex-1">Compra</div>
-          <div className="flex-1 text-right text-green-500 font-semibold">
+        <div className="flex justify-between items-center">
+          <div className="flex items-center gap-2">
+            <FaArrowAltCircleDown />
+            <span>Compra</span>
+          </div>
+          <div
+            className={`flex-1 text-right ${
+              buyPriceSlippage === 0
+                ? "text-gray-500"
+                : buyPriceSlippage < 0
+                ? "text-green-500"
+                : "text-red-500"
+            } font-semibold`}
+          >
             R${buyPrice.toFixed(2)}{" "}
-            <span
-              className={`text-xs ${
-                buyPriceSlippage < 0 ? "text-red-500" : "text-green-500"
-              }`}
-            >
-              ({buyPriceSlippage}%)
-            </span>
+            <span className="text-xs">({buyPriceSlippage}%)</span>
           </div>
         </div>
 
-        <div className="flex justify-between">
-          <div className="flex-1" style={{ color: "var(--text-dark)" }}>
-            Venda
+        <div className="flex justify-between items-center">
+          <div className="flex items-center gap-2">
+            <FaArrowAltCircleUp />
+            <span>Venda</span>
           </div>
-          <div className="flex-1 text-right text-red-500 font-semibold">
+          <div
+            className={`flex-1 text-right ${
+              sellPriceSlippage === 0
+                ? "text-gray-500"
+                : sellPriceSlippage < 0
+                ? "text-green-500"
+                : "text-red-500"
+            } font-semibold`}
+          >
             R${sellPrice.toFixed(2)}{" "}
-            <span
-              className={`text-xs ${
-                sellPriceSlippage < 0 ? "text-red-500" : "text-green-500"
-              }`}
-            >
-              ({sellPriceSlippage}%)
-            </span>
+            <span className="text-xs">({sellPriceSlippage}%)</span>
           </div>
         </div>
       </div>
