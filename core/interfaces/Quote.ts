@@ -1,5 +1,5 @@
 export interface Quote {
-  buyPrice: number;
-  sellPrice: number;
+  buy_price: number;
+  sell_price: number;
   source: string;
 }
