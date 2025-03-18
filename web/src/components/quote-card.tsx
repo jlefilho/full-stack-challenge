@@ -37,10 +37,6 @@ export function QuoteCard({
       </div>
 
       <div className="flex flex-col gap-3 mt-4">
-        <span className="text-sm text-gray-400">
-          {isUSDToBRL ? "USD/BRL" : "BRL/USD"}
-        </span>
-
         <PriceInfo
           type="buy"
           price={buyPrice}

@@ -16,36 +16,28 @@ export function PriceInfo({
   const priceToShow = isUSDToBRL ? price : 1 / price;
   const slippageToShow = isUSDToBRL ? slippage : -slippage;
 
+  let priceColorClass = "";
+
+  if (type === "buy") {
+    priceColorClass = slippageToShow < 0 ? "text-green-600" : "text-red-600";
+  } else if (type === "sell") {
+    priceColorClass = slippageToShow > 0 ? "text-green-600" : "text-red-600";
+  }
+
   return (
     <div className="flex justify-between items-center">
       <div className="flex items-center gap-2">
         {type === "buy" ? <FaArrowAltCircleDown /> : <FaArrowAltCircleUp />}
         <span>{type === "buy" ? "Compra" : "Venda"}</span>
       </div>
-      <div
-        className={`flex-1 text-right ${
-          slippageToShow === 0
-            ? "text-gray-500"
-            : slippageToShow < 0
-            ? "text-green-600"
-            : "text-red-600"
-        } font-semibold`}
-      >
+      <div className={`flex-1 text-right ${priceColorClass} font-semibold`}>
         <span
           className="text-xs font-normal"
           style={{ color: "var(--text-dark)" }}
         >
-          {isUSDToBRL ? "$1 USD = " : "R$ 1 BRL = "}
+          {isUSDToBRL ? "1 USD = " : "1 BRL = "}
         </span>
-        <span
-          className={`font-bold ${
-            slippageToShow === 0
-              ? "text-gray-800"
-              : slippageToShow < 0
-              ? "text-green-600"
-              : "text-red-600"
-          }`}
-        >
+        <span className={`font-bold ${priceColorClass}`}>
           {isUSDToBRL
             ? `R$${priceToShow.toFixed(3)}`
             : `$${priceToShow.toFixed(3)}`}

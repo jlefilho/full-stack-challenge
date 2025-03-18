@@ -19,34 +19,37 @@ export default function Home() {
 
   return (
     <main
-      className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6 min-h-screen"
+      className="min-h-screen bg-primary p-6"
       style={{ backgroundColor: "var(--bg-primary)" }}
     >
-      <div className="col-span-full lg:col-span-3">
-        <CurrencyToggle onToggle={handleToggle} isUSDToBRL={isUSDToBRL} />
-      </div>
+      <div className="max-w-screen-lg mx-auto px-4">
+        <div className="flex justify-center mb-6">
+          <CurrencyToggle onToggle={handleToggle} isUSDToBRL={isUSDToBRL} />
+        </div>
 
-      <div className="col-span-full lg:col-span-3">
-        <AveragesCard
-          averageBuyPrice={data[0].averageBuyPrice}
-          averageSellPrice={data[0].averageSellPrice}
-          updatedAt={data[0].updatedAt}
-          isUSDToBRL={isUSDToBRL}
-        />
-      </div>
+        <div className="flex justify-center md:justify-center mb-6">
+          <AveragesCard
+            averageBuyPrice={data[0].averageBuyPrice}
+            averageSellPrice={data[0].averageSellPrice}
+            isUSDToBRL={isUSDToBRL}
+          />
+        </div>
 
-      {data.map((item, index) => (
-        <QuoteCard
-          key={index}
-          buyPrice={item.buyPrice}
-          sellPrice={item.sellPrice}
-          source={item.source}
-          buyPriceSlippage={item.buyPriceSlippage}
-          sellPriceSlippage={item.sellPriceSlippage}
-          updatedAt={item.updatedAt}
-          isUSDToBRL={isUSDToBRL}
-        />
-      ))}
+        <div className="flex flex-wrap justify-center md:justify-start gap-6">
+          {data.map((item, index) => (
+            <QuoteCard
+              key={index}
+              buyPrice={item.buyPrice}
+              sellPrice={item.sellPrice}
+              source={item.source}
+              buyPriceSlippage={item.buyPriceSlippage}
+              sellPriceSlippage={item.sellPriceSlippage}
+              updatedAt={item.updatedAt}
+              isUSDToBRL={isUSDToBRL}
+            />
+          ))}
+        </div>
+      </div>
     </main>
   );
 }
