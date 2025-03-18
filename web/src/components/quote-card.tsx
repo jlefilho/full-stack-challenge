@@ -8,7 +8,6 @@ interface QuoteCardProps {
   buyPriceSlippage: number;
   sellPriceSlippage: number;
   updatedAt: string;
-  isUSDToBRL: boolean;
 }
 
 export function QuoteCard({
@@ -18,7 +17,6 @@ export function QuoteCard({
   buyPriceSlippage,
   sellPriceSlippage,
   updatedAt,
-  isUSDToBRL,
 }: QuoteCardProps) {
   return (
     <div
@@ -37,18 +35,8 @@ export function QuoteCard({
       </div>
 
       <div className="flex flex-col gap-3 mt-4">
-        <PriceInfo
-          type="buy"
-          price={buyPrice}
-          slippage={buyPriceSlippage}
-          isUSDToBRL={isUSDToBRL}
-        />
-        <PriceInfo
-          type="sell"
-          price={sellPrice}
-          slippage={sellPriceSlippage}
-          isUSDToBRL={isUSDToBRL}
-        />
+        <PriceInfo type="buy" price={buyPrice} slippage={buyPriceSlippage} />
+        <PriceInfo type="sell" price={sellPrice} slippage={sellPriceSlippage} />
 
         <LastUpdated updatedAt={updatedAt} />
       </div>

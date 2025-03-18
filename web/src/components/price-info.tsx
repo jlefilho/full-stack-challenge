@@ -1,18 +1,15 @@
+import { useCurrency } from "@/contexts/currency-context";
 import { FaArrowAltCircleDown, FaArrowAltCircleUp } from "react-icons/fa";
 
 interface PriceInfoProps {
   type: "buy" | "sell";
   price: number;
   slippage: number;
-  isUSDToBRL: boolean;
 }
 
-export function PriceInfo({
-  type,
-  price,
-  slippage,
-  isUSDToBRL,
-}: PriceInfoProps) {
+export function PriceInfo({ type, price, slippage }: PriceInfoProps) {
+  const { isUSDToBRL } = useCurrency();
+
   const priceToShow = isUSDToBRL ? price : 1 / price;
   const slippageToShow = isUSDToBRL ? slippage : -slippage;
 
