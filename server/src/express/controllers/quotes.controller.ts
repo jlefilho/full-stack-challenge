@@ -1,5 +1,5 @@
 import { Router, Request, Response, NextFunction } from "express";
-import { QuoteService } from "../services/quote.service";
+import { QuoteService } from "../services/quote/quote.service";
 
 export class QuotesController {
   static router(): Router {

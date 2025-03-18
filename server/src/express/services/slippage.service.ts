@@ -1,23 +1,50 @@
 import { Slippage } from "../../../../core/interfaces/Slippage";
+import { AverageService } from "./average.service";
+import { QuoteService } from "./quote/quote.service";
 
 export class SlippageService {
+  private averageService: AverageService;
+  private quoteService: QuoteService;
+
+  constructor() {
+    this.averageService = new AverageService();
+    this.quoteService = new QuoteService();
+  }
+
+  private calculateSlippage(price: number, average: number): number {
+    return ((price - average) / average) * 100;
+  }
+
   async listAll(): Promise<Slippage[] | null> {
-    return [
-      {
-        source: "Nubank",
-        sell_price_slippage: 0.0,
-        buy_price_slippage: -0.08,
-      },
-      {
-        source: "Wise",
-        sell_price_slippage: -0.04,
-        buy_price_slippage: -0.06,
-      },
-      {
-        source: "Nomad",
-        sell_price_slippage: 0.06,
-        buy_price_slippage: 0.08,
-      },
-    ] as Slippage[];
+    const average = await this.averageService.get();
+
+    if (average === null) {
+      return null;
+    }
+
+    const quotes = await this.quoteService.listAll();
+
+    if (quotes === null) {
+      return null;
+    }
+
+    const slippageResults: Slippage[] = quotes.map((quote) => {
+      const sellPriceSlippage = this.calculateSlippage(
+        quote.sell_price,
+        average.average_sell_price
+      );
+      const buyPriceSlippage = this.calculateSlippage(
+        quote.buy_price,
+        average.average_buy_price
+      );
+
+      return {
+        source: quote.source,
+        sell_price_slippage: sellPriceSlippage,
+        buy_price_slippage: buyPriceSlippage,
+      };
+    });
+
+    return slippageResults;
   }
 }
