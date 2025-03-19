@@ -8,7 +8,7 @@ import { Slippage } from "../../../core/interfaces/Slippage";
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 export function useQuotesData() {
-  const baseUrl = "https://api-currenzy.onrender.com/";
+  const baseUrl = "https://api-currenzy.onrender.com";
   const { data: quotes, error: quotesError } = useSWR(
     `${baseUrl}/quotes`,
     fetcher,
