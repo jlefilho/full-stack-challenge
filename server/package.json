@@ -10,7 +10,7 @@
     "dev": "tsx watch src/server.ts",
     "start": "node dist/server.js",
     "test": "npx jest",
-    "build": "tsup build"
+    "build": "tsup src"
   },
   "keywords": [],
   "author": "",

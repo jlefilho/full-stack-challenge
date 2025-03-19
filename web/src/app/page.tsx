@@ -25,8 +25,8 @@ export default function Home() {
 
           <div className="flex justify-center md:justify-center mb-6">
             <AveragesCard
-              averageBuyPrice={data[0].averageBuyPrice}
-              averageSellPrice={data[0].averageSellPrice}
+              averageBuyPrice={data[0].averageBuyPrice ?? 0}
+              averageSellPrice={data[0].averageSellPrice ?? 0}
             />
           </div>
 
@@ -34,11 +34,11 @@ export default function Home() {
             {data.map((item, index) => (
               <QuoteCard
                 key={index}
-                buyPrice={item.buyPrice}
-                sellPrice={item.sellPrice}
+                buyPrice={item.buyPrice ?? 0}
+                sellPrice={item.sellPrice ?? 0}
                 source={item.source}
-                buyPriceSlippage={item.buyPriceSlippage}
-                sellPriceSlippage={item.sellPriceSlippage}
+                buyPriceSlippage={item.buyPriceSlippage ?? 0}
+                sellPriceSlippage={item.sellPriceSlippage ?? 0}
                 updatedAt={item.updatedAt}
               />
             ))}
