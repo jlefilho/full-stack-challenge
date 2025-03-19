@@ -4,11 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build:server": "cd server && npm install && npm run build",
     "build:web": "cd web && npm install && npm run build",
     "start:server": "cd server && npm run start",
     "start:web": "cd web && npm run start",
-    "build": "npm run build:server && npm run build:web",
+    "build": "npm run build:web",
     "start": "npm run start:server && npm run start:web"
   },
   "keywords": [],
