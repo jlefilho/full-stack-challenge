@@ -27,7 +27,6 @@ export function AveragesCard({
       </div>
 
       <div className="flex flex-col gap-3 mt-4">
-        {/* Compra */}
         <div className="flex justify-between items-center">
           <div className="flex items-center gap-2">
             <FaArrowAltCircleDown />
@@ -46,7 +45,6 @@ export function AveragesCard({
           </div>
         </div>
 
-        {/* Venda */}
         <div className="flex justify-between items-center">
           <div className="flex items-center gap-2">
             <FaArrowAltCircleUp />
