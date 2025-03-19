@@ -18,9 +18,7 @@ export class WiseService {
 
       const price = result.data?.[result.data.length - 1]?.value;
 
-      if (!price) {
-        return null;
-      }
+      if (!price) return null;
 
       return {
         buyPrice: price,

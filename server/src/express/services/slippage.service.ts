@@ -11,22 +11,22 @@ export class SlippageService {
     this.quoteService = new QuoteService();
   }
 
-  private calculateSlippage(price: number, average: number): number {
+  private calculateSlippage(
+    price: number | undefined,
+    average: number | null
+  ): number | null {
+    if (!price || !average) return null;
     return ((price - average) / average) * 100;
   }
 
   async listAll(): Promise<Slippage[] | null> {
     const average = await this.averageService.get();
 
-    if (average === null) {
-      return null;
-    }
+    if (!average) return null;
 
     const quotes = await this.quoteService.listAll();
 
-    if (quotes === null) {
-      return null;
-    }
+    if (!quotes) return null;
 
     const slippageResults: Slippage[] = quotes.map((quote) => {
       const sellPriceSlippage = this.calculateSlippage(

@@ -12,9 +12,7 @@ export class NomadService {
       const latestData = response.data.history?.[0];
       const price = latestData?.rates?.dolar_exchange;
 
-      if (!price) {
-        return null;
-      }
+      if (!price) return null;
 
       return {
         buyPrice: price,

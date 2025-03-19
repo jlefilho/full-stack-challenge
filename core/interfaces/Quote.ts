@@ -1,5 +1,5 @@
 export interface Quote {
-  buy_price: number;
-  sell_price: number;
+  buy_price: number | undefined;
+  sell_price: number | undefined;
   source: string;
 }

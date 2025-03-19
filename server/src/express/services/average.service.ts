@@ -11,17 +11,13 @@ export class AverageService {
   async get(): Promise<Average | null> {
     const quotes = await this.quoteService.listAll();
 
-    if (quotes === null) {
-      return null;
-    }
+    if (quotes === null) return null;
 
     const validQuotes = quotes.filter(
       (quote) => quote.sell_price !== null && quote.buy_price !== null
     );
 
-    if (validQuotes.length === 0) {
-      return null;
-    }
+    if (validQuotes.length === 0) return null;
 
     const totalSellPrice = validQuotes.reduce(
       (acc, quote) => acc + quote.sell_price!,

@@ -1,4 +1,4 @@
-import { Router, Request, Response, NextFunction } from "express";
+import { Router, Request, Response } from "express";
 import { AverageService } from "../services/average.service";
 
 export class AverageController {
@@ -8,11 +8,13 @@ export class AverageController {
       strict: true,
     });
 
-    router.get("/", (req: Request, res: Response, next: NextFunction) => {
+    router.get("/", (req: Request, res: Response) => {
       new AverageService()
         .get()
         .then((result) => res.status(200).json(result))
-        .catch(next);
+        .catch((err) => {
+          res.status(500).json({ message: err.message });
+        });
     });
 
     return router;

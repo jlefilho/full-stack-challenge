@@ -1,4 +1,4 @@
 export interface Average {
-  average_buy_price: number;
-  average_sell_price: number;
+  average_buy_price: number | null;
+  average_sell_price: number | null;
 }

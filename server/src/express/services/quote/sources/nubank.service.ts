@@ -22,6 +22,9 @@ export class NubankService {
       const dolarPrice = parseFloat(
         dolarPriceElement.replace("R$", "").replace(",", ".")
       );
+
+      if (!dolarPrice) return null;
+
       return {
         buyPrice: dolarPrice * 0.98,
         sellPrice: dolarPrice,

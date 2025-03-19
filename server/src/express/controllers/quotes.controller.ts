@@ -1,4 +1,4 @@
-import { Router, Request, Response, NextFunction } from "express";
+import { Router, Request, Response } from "express";
 import { QuoteService } from "../services/quote/quote.service";
 
 export class QuotesController {
@@ -8,11 +8,13 @@ export class QuotesController {
       strict: true,
     });
 
-    router.get("/", (req: Request, res: Response, next: NextFunction) => {
+    router.get("/", (req: Request, res: Response) => {
       new QuoteService()
         .listAll()
         .then((result) => res.status(200).json(result))
-        .catch(next);
+        .catch((err) => {
+          res.status(500).json({ message: err.message });
+        });
     });
 
     return router;
