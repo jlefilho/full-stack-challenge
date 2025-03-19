@@ -22,18 +22,18 @@ export class QuoteService {
     return [
       {
         source: "Nubank",
-        sell_price: nubankService?.sellPrice,
-        buy_price: nubankService?.buyPrice,
+        sell_price: nubankService ? nubankService.sellPrice : null,
+        buy_price: nubankService ? nubankService.buyPrice : null,
       },
       {
         source: "Wise",
-        buy_price: wiseRates?.buyPrice,
-        sell_price: wiseRates?.sellPrice,
+        sell_price: wiseRates ? wiseRates.sellPrice : null,
+        buy_price: wiseRates ? wiseRates.buyPrice : null,
       },
       {
         source: "Nomad",
-        buy_price: nomadRates?.buyPrice,
-        sell_price: nomadRates?.sellPrice,
+        sell_price: nomadRates ? nomadRates.sellPrice : null,
+        buy_price: nomadRates ? nomadRates.buyPrice : null,
       },
     ] as Quote[];
   }

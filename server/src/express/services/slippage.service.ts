@@ -12,7 +12,7 @@ export class SlippageService {
   }
 
   private calculateSlippage(
-    price: number | undefined,
+    price: number | null,
     average: number | null
   ): number | null {
     if (!price || !average) return null;
