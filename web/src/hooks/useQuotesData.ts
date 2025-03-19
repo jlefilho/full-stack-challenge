@@ -8,22 +8,23 @@ import { Slippage } from "../../../core/interfaces/Slippage";
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 export function useQuotesData() {
+  const baseUrl = "https://pluggy-full-stack-challenge.onrender.com";
   const { data: quotes, error: quotesError } = useSWR(
-    "http://localhost:8000/quotes",
+    `${baseUrl}/quotes`,
     fetcher,
     {
       refreshInterval: 15000,
     }
   );
   const { data: average, error: averageError } = useSWR(
-    "http://localhost:8000/average",
+    `${baseUrl}/average`,
     fetcher,
     {
       refreshInterval: 15000,
     }
   );
   const { data: slippage, error: slippageError } = useSWR(
-    "http://localhost:8000/slippage",
+    `${baseUrl}/slippage`,
     fetcher,
     { refreshInterval: 15000 }
   );
