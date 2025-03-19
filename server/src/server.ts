@@ -12,6 +12,8 @@ server.use("/quotes", QuotesController.router());
 server.use("/average", AverageController.router());
 server.use("/slippage", SlippageController.router());
 
-server.listen(8000, () => {
-  console.log("Server running on port 8000");
+const port = process.env.PORT || 8000;
+
+server.listen(port, () => {
+  console.log(`Server running on ${port}`);
 });
