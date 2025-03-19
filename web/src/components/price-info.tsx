@@ -16,9 +16,9 @@ export function PriceInfo({ type, price, slippage }: PriceInfoProps) {
   let priceColorClass = "";
 
   if (type === "buy") {
-    priceColorClass = slippageToShow < 0 ? "text-green-600" : "text-red-600";
-  } else if (type === "sell") {
     priceColorClass = slippageToShow > 0 ? "text-green-600" : "text-red-600";
+  } else if (type === "sell") {
+    priceColorClass = slippageToShow < 0 ? "text-green-600" : "text-red-600";
   }
 
   return (
@@ -37,7 +37,7 @@ export function PriceInfo({ type, price, slippage }: PriceInfoProps) {
         <span className={`font-bold ${priceColorClass}`}>
           {isUSDToBRL
             ? `R$${priceToShow.toFixed(3)}`
-            : `$${priceToShow.toFixed(3)}`}
+            : `$${priceToShow.toFixed(3)}`}{" "}
         </span>
         <span className="text-xs">({slippageToShow.toFixed(3)}%)</span>
       </div>
