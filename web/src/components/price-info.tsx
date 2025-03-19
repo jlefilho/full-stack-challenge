@@ -13,13 +13,8 @@ export function PriceInfo({ type, price, slippage }: PriceInfoProps) {
   const priceToShow = isUSDToBRL ? price : 1 / price;
   const slippageToShow = isUSDToBRL ? slippage : -slippage;
 
-  let priceColorClass = "";
-
-  if (type === "buy") {
-    priceColorClass = slippageToShow > 0 ? "text-green-600" : "text-red-600";
-  } else if (type === "sell") {
-    priceColorClass = slippageToShow < 0 ? "text-green-600" : "text-red-600";
-  }
+  const priceColorClass =
+    slippageToShow > 0 ? "text-green-600" : "text-red-600";
 
   return (
     <div className="flex justify-between items-center">
