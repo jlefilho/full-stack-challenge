@@ -6,12 +6,37 @@ import { useQuotesData } from "@/hooks/useQuotesData";
 import { CurrencyProvider } from "@/contexts/currency-context";
 import { CurrencyToggle } from "@/components/currency-toggle";
 import Link from "next/link";
+import { Loading } from "@/components/loading";
+import { Error } from "@/components/error";
 
 export default function Home() {
   const { data, isLoading, isError } = useQuotesData();
 
-  if (isLoading) return <div>Loading...</div>;
-  if (isError || !data) return <div>Error loading data</div>;
+  const handleRetry = (): void => {
+    window.location.reload();
+  };
+
+  if (isLoading) {
+    return (
+      <main
+        className="min-h-screen bg-primary p-6 flex justify-center items-center"
+        style={{ backgroundColor: "var(--bg-primary)" }}
+      >
+        <Loading />
+      </main>
+    );
+  }
+
+  if (isError || !data) {
+    return (
+      <main
+        className="min-h-screen p-6 flex justify-center items-center"
+        style={{ backgroundColor: "var(--bg-primary)" }}
+      >
+        <Error onRetry={handleRetry} />
+      </main>
+    );
+  }
 
   return (
     <main
