@@ -1,3 +1,7 @@
+import {
+  QuoteSourceMapping,
+  QUOTE_SOURCE,
+} from "../../../../core/interfaces/QuoteSources";
 import { AverageService } from "./average.service";
 import { QuoteService } from "./quote/quote.service";
 
@@ -13,17 +17,20 @@ describe("AverageService", () => {
   it("should return average sell and buy prices when valid quotes are returned", async () => {
     jest.spyOn(QuoteService.prototype, "listAll").mockResolvedValue([
       {
-        source: "Nubank",
+        display_name: QuoteSourceMapping[QUOTE_SOURCE.Nubank].display_name,
+        source: QuoteSourceMapping[QUOTE_SOURCE.Nubank].source,
         buy_price: 5.7 * 0.98,
         sell_price: 5.7,
       },
       {
-        source: "Wise",
+        display_name: QuoteSourceMapping[QUOTE_SOURCE.Wise].display_name,
+        source: QuoteSourceMapping[QUOTE_SOURCE.Wise].source,
         buy_price: 5.65,
         sell_price: 5.65 * 1.02,
       },
       {
-        source: "Nomad",
+        display_name: QuoteSourceMapping[QUOTE_SOURCE.Nomad].display_name,
+        source: QuoteSourceMapping[QUOTE_SOURCE.Nomad].source,
         buy_price: 5.6,
         sell_price: 5.6 * 1.02,
       },
@@ -40,17 +47,20 @@ describe("AverageService", () => {
   it("should return average sell and buy prices only for valid quotes", async () => {
     jest.spyOn(QuoteService.prototype, "listAll").mockResolvedValue([
       {
-        source: "Nubank",
+        display_name: QuoteSourceMapping[QUOTE_SOURCE.Nubank].display_name,
+        source: QuoteSourceMapping[QUOTE_SOURCE.Nubank].source,
         buy_price: 5.7 * 0.98,
         sell_price: 5.7,
       },
       {
-        source: "Wise",
+        display_name: QuoteSourceMapping[QUOTE_SOURCE.Wise].display_name,
+        source: QuoteSourceMapping[QUOTE_SOURCE.Wise].source,
         buy_price: 5.65,
         sell_price: 5.65 * 1.02,
       },
       {
-        source: "Nomad",
+        display_name: QuoteSourceMapping[QUOTE_SOURCE.Nomad].display_name,
+        source: QuoteSourceMapping[QUOTE_SOURCE.Nomad].source,
         buy_price: null,
         sell_price: null,
       },
@@ -67,17 +77,20 @@ describe("AverageService", () => {
   it("should return null if no valid quotes are returned", async () => {
     jest.spyOn(QuoteService.prototype, "listAll").mockResolvedValue([
       {
-        source: "Nubank",
+        display_name: QuoteSourceMapping[QUOTE_SOURCE.Nubank].display_name,
+        source: QuoteSourceMapping[QUOTE_SOURCE.Nubank].source,
         buy_price: null,
         sell_price: null,
       },
       {
-        source: "Wise",
+        display_name: QuoteSourceMapping[QUOTE_SOURCE.Wise].display_name,
+        source: QuoteSourceMapping[QUOTE_SOURCE.Wise].source,
         buy_price: null,
         sell_price: null,
       },
       {
-        source: "Nomad",
+        display_name: QuoteSourceMapping[QUOTE_SOURCE.Nomad].display_name,
+        source: QuoteSourceMapping[QUOTE_SOURCE.Nomad].source,
         buy_price: null,
         sell_price: null,
       },

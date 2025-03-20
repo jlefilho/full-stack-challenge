@@ -2,6 +2,10 @@ import { NubankService } from "./sources/nubank.service";
 import { NomadService } from "./sources/nomad.service";
 import { WiseService } from "./sources/wise.service";
 import { Quote } from "../../../../../core/interfaces/Quote";
+import {
+  QuoteSourceMapping,
+  QUOTE_SOURCE,
+} from "../../../../../core/interfaces/QuoteSources";
 
 export class QuoteService {
   private wiseService: WiseService;
@@ -21,17 +25,20 @@ export class QuoteService {
 
     return [
       {
-        source: "Nubank",
+        display_name: QuoteSourceMapping[QUOTE_SOURCE.Nubank].display_name,
+        source: QuoteSourceMapping[QUOTE_SOURCE.Nubank].source,
         sell_price: nubankService ? nubankService.sellPrice : null,
         buy_price: nubankService ? nubankService.buyPrice : null,
       },
       {
-        source: "Wise",
+        display_name: QuoteSourceMapping[QUOTE_SOURCE.Wise].display_name,
+        source: QuoteSourceMapping[QUOTE_SOURCE.Wise].source,
         sell_price: wiseRates ? wiseRates.sellPrice : null,
         buy_price: wiseRates ? wiseRates.buyPrice : null,
       },
       {
-        source: "Nomad",
+        display_name: QuoteSourceMapping[QUOTE_SOURCE.Nomad].display_name,
+        source: QuoteSourceMapping[QUOTE_SOURCE.Nomad].source,
         sell_price: nomadRates ? nomadRates.sellPrice : null,
         buy_price: nomadRates ? nomadRates.buyPrice : null,
       },

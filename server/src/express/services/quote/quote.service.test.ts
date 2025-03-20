@@ -2,6 +2,10 @@ import { QuoteService } from "./quote.service";
 import { NubankService } from "./sources/nubank.service";
 import { NomadService } from "./sources/nomad.service";
 import { WiseService } from "./sources/wise.service";
+import {
+  QUOTE_SOURCE,
+  QuoteSourceMapping,
+} from "../../../../../core/interfaces/QuoteSources";
 
 describe("QuoteService", () => {
   let quoteService: QuoteService;
@@ -32,17 +36,20 @@ describe("QuoteService", () => {
 
     expect(result).toEqual([
       {
-        source: "Nubank",
+        display_name: QuoteSourceMapping[QUOTE_SOURCE.Nubank].display_name,
+        source: QuoteSourceMapping[QUOTE_SOURCE.Nubank].source,
         buy_price: 5.7 * 0.98,
         sell_price: 5.7,
       },
       {
-        source: "Wise",
+        display_name: QuoteSourceMapping[QUOTE_SOURCE.Wise].display_name,
+        source: QuoteSourceMapping[QUOTE_SOURCE.Wise].source,
         buy_price: 5.65,
         sell_price: 5.65 * 1.02,
       },
       {
-        source: "Nomad",
+        display_name: "Nomad",
+        source: "https://www.nomadglobal.com/cotacoes/dolar",
         buy_price: 5.6,
         sell_price: 5.6 * 1.02,
       },
@@ -70,17 +77,20 @@ describe("QuoteService", () => {
 
     expect(result).toEqual([
       {
-        source: "Nubank",
+        display_name: QuoteSourceMapping[QUOTE_SOURCE.Nubank].display_name,
+        source: QuoteSourceMapping[QUOTE_SOURCE.Nubank].source,
         buy_price: 5.7 * 0.98,
         sell_price: 5.7,
       },
       {
-        source: "Wise",
+        display_name: QuoteSourceMapping[QUOTE_SOURCE.Wise].display_name,
+        source: QuoteSourceMapping[QUOTE_SOURCE.Wise].source,
         buy_price: 5.65,
         sell_price: 5.65 * 1.02,
       },
       {
-        source: "Nomad",
+        display_name: QuoteSourceMapping[QUOTE_SOURCE.Nomad].display_name,
+        source: QuoteSourceMapping[QUOTE_SOURCE.Nomad].source,
         buy_price: null,
         sell_price: null,
       },

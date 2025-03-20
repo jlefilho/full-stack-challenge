@@ -1,6 +1,10 @@
 import { SlippageService } from "./slippage.service";
 import { AverageService } from "./average.service";
 import { QuoteService } from "./quote/quote.service";
+import {
+  QuoteSourceMapping,
+  QUOTE_SOURCE,
+} from "../../../../core/interfaces/QuoteSources";
 
 jest.mock("./quote/quote.service");
 jest.mock("./average.service");
@@ -20,17 +24,20 @@ describe("SlippageService", () => {
 
     jest.spyOn(QuoteService.prototype, "listAll").mockResolvedValue([
       {
-        source: "Nubank",
+        display_name: QuoteSourceMapping[QUOTE_SOURCE.Nubank].display_name,
+        source: QuoteSourceMapping[QUOTE_SOURCE.Nubank].source,
         buy_price: 5.7 * 0.98,
         sell_price: 5.7,
       },
       {
-        source: "Wise",
+        display_name: QuoteSourceMapping[QUOTE_SOURCE.Wise].display_name,
+        source: QuoteSourceMapping[QUOTE_SOURCE.Wise].source,
         buy_price: 5.65,
         sell_price: 5.65 * 1.02,
       },
       {
-        source: "Nomad",
+        display_name: QuoteSourceMapping[QUOTE_SOURCE.Nomad].display_name,
+        source: QuoteSourceMapping[QUOTE_SOURCE.Nomad].source,
         buy_price: 5.6,
         sell_price: 5.6 * 1.02,
       },
@@ -40,17 +47,17 @@ describe("SlippageService", () => {
 
     expect(result).toEqual([
       {
-        source: "Nubank",
+        source: QuoteSourceMapping[QUOTE_SOURCE.Nubank].source,
         sell_price_slippage: ((5.7 - 5.8) / 5.8) * 100,
         buy_price_slippage: ((5.7 * 0.98 - 5.5) / 5.5) * 100,
       },
       {
-        source: "Wise",
+        source: QuoteSourceMapping[QUOTE_SOURCE.Wise].source,
         sell_price_slippage: ((5.65 * 1.02 - 5.8) / 5.8) * 100,
         buy_price_slippage: ((5.65 - 5.5) / 5.5) * 100,
       },
       {
-        source: "Nomad",
+        source: QuoteSourceMapping[QUOTE_SOURCE.Nomad].source,
         sell_price_slippage: ((5.6 * 1.02 - 5.8) / 5.8) * 100,
         buy_price_slippage: ((5.6 - 5.5) / 5.5) * 100,
       },
@@ -61,17 +68,20 @@ describe("SlippageService", () => {
     jest.spyOn(AverageService.prototype, "get").mockResolvedValue(null);
     jest.spyOn(QuoteService.prototype, "listAll").mockResolvedValue([
       {
-        source: "Nubank",
+        display_name: QuoteSourceMapping[QUOTE_SOURCE.Nubank].display_name,
+        source: QuoteSourceMapping[QUOTE_SOURCE.Nubank].source,
         buy_price: 5.7 * 0.98,
         sell_price: 5.7,
       },
       {
-        source: "Wise",
+        display_name: QuoteSourceMapping[QUOTE_SOURCE.Nomad].display_name,
+        source: QuoteSourceMapping[QUOTE_SOURCE.Nomad].source,
         buy_price: 5.65,
         sell_price: 5.65 * 1.02,
       },
       {
-        source: "Nomad",
+        display_name: QuoteSourceMapping[QUOTE_SOURCE.Nomad].display_name,
+        source: QuoteSourceMapping[QUOTE_SOURCE.Nomad].source,
         buy_price: 5.6,
         sell_price: 5.6 * 1.02,
       },
@@ -103,17 +113,20 @@ describe("SlippageService", () => {
 
     jest.spyOn(QuoteService.prototype, "listAll").mockResolvedValue([
       {
-        source: "Nubank",
+        display_name: QuoteSourceMapping[QUOTE_SOURCE.Nubank].display_name,
+        source: QuoteSourceMapping[QUOTE_SOURCE.Nubank].source,
         buy_price: 5.7 * 0.98,
         sell_price: 5.7,
       },
       {
-        source: "Wise",
+        display_name: QuoteSourceMapping[QUOTE_SOURCE.Nomad].display_name,
+        source: QuoteSourceMapping[QUOTE_SOURCE.Nomad].source,
         buy_price: null,
         sell_price: null,
       },
       {
-        source: "Nomad",
+        display_name: QuoteSourceMapping[QUOTE_SOURCE.Nomad].display_name,
+        source: QuoteSourceMapping[QUOTE_SOURCE.Nomad].source,
         buy_price: 5.6,
         sell_price: 5.6 * 1.02,
       },
@@ -123,17 +136,17 @@ describe("SlippageService", () => {
 
     expect(result).toEqual([
       {
-        source: "Nubank",
+        source: QuoteSourceMapping[QUOTE_SOURCE.Nubank].source,
         sell_price_slippage: ((5.7 - 5.8) / 5.8) * 100,
         buy_price_slippage: ((5.7 * 0.98 - 5.5) / 5.5) * 100,
       },
       {
-        source: "Wise",
+        source: QuoteSourceMapping[QUOTE_SOURCE.Nomad].source,
         sell_price_slippage: null,
         buy_price_slippage: null,
       },
       {
-        source: "Nomad",
+        source: QuoteSourceMapping[QUOTE_SOURCE.Nomad].source,
         sell_price_slippage: ((5.6 * 1.02 - 5.8) / 5.8) * 100,
         buy_price_slippage: ((5.6 - 5.5) / 5.5) * 100,
       },
