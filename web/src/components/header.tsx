@@ -1,23 +1,33 @@
-import { Saira_Stencil_One } from "next/font/google";
-import { MenuBar } from "./menu-bar";
-import Link from "next/link";
+"use client";
 
-const sairaStencil = Saira_Stencil_One({
-  weight: ["400"],
-  subsets: ["latin"],
-});
+import Link from "next/link";
+import { MenuBar } from "./menu-bar";
+import { MobileMenu } from "./mobile-menu";
+
+const menuItems = [
+  { title: "Cotações", href: "/" },
+  { title: "Sobre", href: "/about" },
+  { title: "Contato", href: "/contact" },
+];
 
 export function Header() {
   return (
-    <header className="flex items-center justify-between px-[160px] py-10">
+    <header className="relative flex items-center justify-between px-6 py-10 lg:px-[160px] w-full">
       <Link
         href="/"
-        className={`${sairaStencil.className} text-[var(--logo-color)] font-normal text-[40px] leading-[150%]`}
+        className="text-[var(--logo-color)] font-normal text-[40px] leading-[150%]"
       >
         Curren
         <span className="text-[var(--orange-low)]">zy</span>
       </Link>
-      <MenuBar />
+
+      <div className="hidden lg:flex flex-1 justify-center">
+        <MenuBar items={menuItems} />
+      </div>
+
+      <div className="lg:hidden">
+        <MobileMenu menuItems={menuItems} />
+      </div>
     </header>
   );
 }

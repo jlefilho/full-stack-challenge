@@ -1,12 +1,10 @@
 import { MenuItem } from "./menu-item";
 
-const items = [
-  { title: "Cotações", href: "/", selected: true },
-  { title: "Sobre", href: "/about" },
-  { title: "Contato", href: "/contact" },
-];
+interface MenuBarProps {
+  items: { title: string; href: string; selected?: boolean }[];
+}
 
-export function MenuBar() {
+export function MenuBar({ items }: MenuBarProps) {
   return (
     <div className="flex items-center justify-center gap-10">
       {items.map((item, i) => (
@@ -15,7 +13,7 @@ export function MenuBar() {
           title={item.title}
           href={item.href}
           selected={item.selected}
-        ></MenuItem>
+        />
       ))}
     </div>
   );

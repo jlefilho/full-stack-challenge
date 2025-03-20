@@ -4,6 +4,7 @@ interface MenuItemProps {
   title: string;
   href: string;
   selected?: boolean;
+  onClick?: () => void;
 }
 
 export function MenuItem(props: MenuItemProps) {
@@ -16,12 +17,13 @@ export function MenuItem(props: MenuItemProps) {
     <Link
       href={props.href}
       className={`${fontWeightClass} 
-				text-[var(--text-dark)] text-[16px] leading-[22px] 
-				text-center uppercase cursor-pointer
-				${borderClass}
-				hover:border-b-4 hover:border-[var(--orange-low)] 
-				hover:font-semibold
-				transition-all duration-100 ease-in-out`}
+        text-[var(--text-dark)] text-[16px] leading-[22px] 
+        text-center uppercase cursor-pointer
+        ${borderClass}
+        hover:border-b-4 hover:border-[var(--orange-low)] 
+        hover:font-semibold
+        transition-all duration-100 ease-in-out`}
+      onClick={props.onClick}
     >
       {props.title}
     </Link>
