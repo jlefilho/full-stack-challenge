@@ -10,8 +10,16 @@ interface PriceInfoProps {
 export function PriceInfo({ type, price, slippage }: PriceInfoProps) {
   const { isUSDToBRL } = useCurrency();
 
-  const priceToShow = isUSDToBRL ? price : 1 / price;
-  const slippageToShow = isUSDToBRL ? slippage : -slippage;
+  let priceToShow = 0;
+  let slippageToShow = 0;
+
+  if (price) {
+    priceToShow = isUSDToBRL ? price : 1 / price;
+  }
+
+  if (slippage) {
+    slippageToShow = isUSDToBRL ? slippage : -slippage;
+  }
 
   const priceColorClass =
     slippageToShow > 0 ? "text-green-600" : "text-red-600";

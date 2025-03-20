@@ -18,19 +18,19 @@ export default function Home() {
       style={{ backgroundColor: "var(--bg-primary)" }}
     >
       <CurrencyProvider>
-        <div className="max-w-screen-lg mx-auto px-4">
+        <div className="mx-auto px-4">
           <div className="flex justify-center mb-6">
             <CurrencyToggle />
           </div>
 
-          <div className="flex justify-center md:justify-center mb-6">
+          <div className="flex justify-center md:justify-center mb-10">
             <AveragesCard
               averageBuyPrice={data[0].averageBuyPrice ?? 0}
               averageSellPrice={data[0].averageSellPrice ?? 0}
             />
           </div>
 
-          <div className="flex flex-wrap justify-center md:justify-start gap-6">
+          <div className="flex flex-wrap justify-center md:justify-center gap-6">
             {data.map((item, index) => (
               <QuoteCard
                 key={index}
