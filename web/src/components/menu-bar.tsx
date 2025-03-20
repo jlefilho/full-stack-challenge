@@ -1,3 +1,6 @@
+"use client";
+
+import { usePathname } from "next/navigation";
 import { MenuItem } from "./menu-item";
 
 interface MenuBarProps {
@@ -5,6 +8,8 @@ interface MenuBarProps {
 }
 
 export function MenuBar({ items }: MenuBarProps) {
+  const path = usePathname();
+
   return (
     <div className="flex items-center justify-center gap-10">
       {items.map((item, i) => (
@@ -12,7 +17,7 @@ export function MenuBar({ items }: MenuBarProps) {
           key={i}
           title={item.title}
           href={item.href}
-          selected={item.selected}
+          selected={path === item.href}
         />
       ))}
     </div>

@@ -12,7 +12,7 @@ const menuItems = [
 
 export function Header() {
   return (
-    <header className="relative flex items-center justify-between px-6 py-10 lg:px-[160px] w-full">
+    <header className="relative flex items-center justify-between px-6 py-4 lg:px-[160px] w-full shadow-lg">
       <Logo />
 
       <div

@@ -4,12 +4,14 @@ import { useState } from "react";
 import { IoMenuOutline } from "react-icons/io5";
 import { MenuItem } from "./menu-item";
 import { Logo } from "./logo";
+import { usePathname } from "next/navigation";
 
 interface MobileMenuProps {
   menuItems: { title: string; href: string }[];
 }
 
 export function MobileMenu({ menuItems }: MobileMenuProps) {
+  const path = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleMenuItemClick = () => {
@@ -49,6 +51,7 @@ export function MobileMenu({ menuItems }: MobileMenuProps) {
               title={item.title}
               href={item.href}
               onClick={handleMenuItemClick}
+              selected={path === item.href}
             />
           ))}
         </div>
