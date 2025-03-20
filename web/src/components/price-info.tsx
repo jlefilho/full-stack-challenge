@@ -1,10 +1,11 @@
 import { useCurrency } from "@/contexts/currency-context";
+import { formatNumberToBRL } from "@/utils/formatNumber";
 import { FaArrowAltCircleDown, FaArrowAltCircleUp } from "react-icons/fa";
 
 interface PriceInfoProps {
   type: "buy" | "sell";
   price: number;
-  slippage: number;
+  slippage?: number;
 }
 
 export function PriceInfo({ type, price, slippage }: PriceInfoProps) {
@@ -30,19 +31,25 @@ export function PriceInfo({ type, price, slippage }: PriceInfoProps) {
         {type === "buy" ? <FaArrowAltCircleDown /> : <FaArrowAltCircleUp />}
         <span>{type === "buy" ? "Compra" : "Venda"}</span>
       </div>
-      <div className={`flex-1 text-right ${priceColorClass} font-semibold`}>
+      <div
+        className={`flex-1 ml-4 text-right ${
+          slippage ? priceColorClass : ""
+        } font-semibold`}
+      >
         <span
           className="text-xs font-normal"
           style={{ color: "var(--text-dark)" }}
         >
           {isUSDToBRL ? "1 USD = " : "1 BRL = "}
         </span>
-        <span className={`font-bold ${priceColorClass}`}>
+        <span className={`font-bold ${slippage ? priceColorClass : ""}`}>
           {isUSDToBRL
-            ? `R$${priceToShow.toFixed(3)}`
+            ? `R$${formatNumberToBRL(priceToShow)}`
             : `$${priceToShow.toFixed(3)}`}{" "}
         </span>
-        <span className="text-xs">({slippageToShow.toFixed(3)}%)</span>
+        {slippage && (
+          <span className="text-xs">({slippageToShow.toFixed(3)}%)</span>
+        )}
       </div>
     </div>
   );
