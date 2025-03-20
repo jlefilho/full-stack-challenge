@@ -44,6 +44,7 @@ function mergeData(quotes: Quote[], average: Average, slippage: Slippage[]) {
   return quotes.map((quote) => {
     const slippageData = slippage.find((s) => s.source === quote.source);
     return {
+      displayName: quote.display_name,
       source: quote.source,
       buyPrice: quote.buy_price,
       sellPrice: quote.sell_price,

@@ -11,7 +11,7 @@ export function LastUpdated({ updatedAt }: LastUpdatedProps) {
   return (
     <div className="flex justify-between items-center mt-6">
       <div className="flex items-center gap-2">
-        <FaSync className="text-gray-400 cursor-pointer" size={10} />
+        <FaSync className="text-gray-400" size={10} />
         <span className="text-xs text-gray-400">Última atualização:</span>
         <span className="text-xs text-gray-500">{formattedDate}</span>
       </div>

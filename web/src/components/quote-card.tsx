@@ -2,7 +2,7 @@ import { LastUpdated } from "./last-updated";
 import { PriceInfo } from "./price-info";
 
 interface QuoteCardProps {
-  source: string;
+  displayName: string;
   buyPrice: number;
   sellPrice: number;
   buyPriceSlippage: number;
@@ -11,7 +11,7 @@ interface QuoteCardProps {
 }
 
 export function QuoteCard({
-  source,
+  displayName,
   buyPrice,
   sellPrice,
   buyPriceSlippage,
@@ -30,7 +30,7 @@ export function QuoteCard({
           className="text-xl font-semibold"
           style={{ color: "var(--text-dark)" }}
         >
-          {source}
+          {displayName}
         </h3>
       </div>
 

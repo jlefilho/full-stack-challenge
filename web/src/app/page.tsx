@@ -5,6 +5,7 @@ import { AveragesCard } from "@/components/averages-card";
 import { useQuotesData } from "@/hooks/useQuotesData";
 import { CurrencyProvider } from "@/contexts/currency-context";
 import { CurrencyToggle } from "@/components/currency-toggle";
+import Link from "next/link";
 
 export default function Home() {
   const { data, isLoading, isError } = useQuotesData();
@@ -32,15 +33,16 @@ export default function Home() {
 
           <div className="flex flex-wrap justify-center md:justify-center gap-6">
             {data.map((item, index) => (
-              <QuoteCard
-                key={index}
-                buyPrice={item.buyPrice ?? 0}
-                sellPrice={item.sellPrice ?? 0}
-                source={item.source}
-                buyPriceSlippage={item.buyPriceSlippage ?? 0}
-                sellPriceSlippage={item.sellPriceSlippage ?? 0}
-                updatedAt={item.updatedAt}
-              />
+              <Link key={index} href={item.source} target="_blank">
+                <QuoteCard
+                  buyPrice={item.buyPrice ?? 0}
+                  sellPrice={item.sellPrice ?? 0}
+                  displayName={item.displayName}
+                  buyPriceSlippage={item.buyPriceSlippage ?? 0}
+                  sellPriceSlippage={item.sellPriceSlippage ?? 0}
+                  updatedAt={item.updatedAt}
+                />
+              </Link>
             ))}
           </div>
         </div>
