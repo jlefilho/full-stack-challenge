@@ -20,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={saira.className}>
+      <body className={saira.className} style={{ paddingTop: "80px" }}>
         <Header />
         {children}
       </body>

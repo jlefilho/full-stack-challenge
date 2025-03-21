@@ -12,18 +12,20 @@ const menuItems = [
 
 export function Header() {
   return (
-    <header className="relative flex items-center justify-between px-6 py-4 lg:px-[160px] w-full shadow-lg">
-      <Logo />
+    <header className="fixed top-0 left-0 right-0 z-50 w-full shadow-lg bg-white">
+      <div className="flex items-center justify-between px-6 py-4 lg:px-[160px]">
+        <Logo />
 
-      <div
-        className="hidden lg:flex flex-1 justify-center"
-        style={{ marginLeft: "-170px" }}
-      >
-        <MenuBar items={menuItems} />
-      </div>
+        <div
+          className="hidden lg:flex flex-1 justify-center"
+          style={{ marginLeft: "-170px" }}
+        >
+          <MenuBar items={menuItems} />
+        </div>
 
-      <div className="lg:hidden">
-        <MobileMenu menuItems={menuItems} />
+        <div className="lg:hidden">
+          <MobileMenu menuItems={menuItems} />
+        </div>
       </div>
     </header>
   );

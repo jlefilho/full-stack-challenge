@@ -40,7 +40,7 @@ export default function Quotes() {
 
   return (
     <main
-      className="min-h-screen bg-primary p-6"
+      className="min-h-screen bg-primary p-6 overflow-y-auto"
       style={{ backgroundColor: "var(--bg-primary)" }}
     >
       <CurrencyProvider>
