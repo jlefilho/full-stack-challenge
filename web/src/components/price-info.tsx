@@ -48,7 +48,7 @@ export function PriceInfo({ type, price, slippage }: PriceInfoProps) {
             : `$${priceToShow.toFixed(3)} `}
         </span>
         {slippage && (
-          <span className="text-xs">({slippageToShow.toFixed(3)}%)</span>
+          <span className="text-xs ml-1">({slippageToShow.toFixed(3)}%)</span>
         )}
       </div>
     </div>

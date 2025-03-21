@@ -5,7 +5,7 @@ import { Header } from "@/components/header";
 
 export const metadata: Metadata = {
   title: "Currenzy",
-  description: "",
+  description: "Acompanhe cotações de dólar em tempo real",
 };
 
 const saira = Saira({
