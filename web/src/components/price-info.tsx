@@ -26,13 +26,13 @@ export function PriceInfo({ type, price, slippage }: PriceInfoProps) {
     slippageToShow > 0 ? "text-green-600" : "text-red-600";
 
   return (
-    <div className="flex justify-between items-center">
+    <div className="flex flex-col sm:flex-row justify-between items-center">
       <div className="flex items-center gap-2">
         {type === "buy" ? <FaArrowAltCircleDown /> : <FaArrowAltCircleUp />}
         <span>{type === "buy" ? "Compra" : "Venda"}</span>
       </div>
       <div
-        className={`flex-1 ml-4 text-right ${
+        className={`flex-1 mt-2 sm:mt-0 ml-4 text-right ${
           slippage ? priceColorClass : ""
         } font-semibold`}
       >
@@ -45,7 +45,7 @@ export function PriceInfo({ type, price, slippage }: PriceInfoProps) {
         <span className={`font-bold ${slippage ? priceColorClass : ""}`}>
           {isUSDToBRL
             ? `R$${formatNumberToBRL(priceToShow)}`
-            : `$${priceToShow.toFixed(3)}`}{" "}
+            : `$${priceToShow.toFixed(3)} `}
         </span>
         {slippage && (
           <span className="text-xs">({slippageToShow.toFixed(3)}%)</span>

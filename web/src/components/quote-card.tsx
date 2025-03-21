@@ -20,14 +20,14 @@ export function QuoteCard({
 }: QuoteCardProps) {
   return (
     <div
-      className="bg-white shadow-lg rounded-lg px-8 py-4 flex flex-col justify-center gap-3 border border-gray-200 hover:shadow-xl transition-all duration-300 ease-in-out max-h-[250px]"
+      className="bg-white shadow-lg rounded-lg px-6 py-4 flex flex-col justify-between gap-4 border border-gray-200 hover:shadow-xl transition-all duration-300 ease-in-out max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg"
       style={{
         borderLeft: "4px solid var(--orange-low)",
       }}
     >
-      <div className="flex items-center">
+      <div className="flex items-center justify-between">
         <h3
-          className="text-xl font-semibold"
+          className="text-lg sm:text-xl font-semibold"
           style={{ color: "var(--text-dark)" }}
         >
           {displayName}
