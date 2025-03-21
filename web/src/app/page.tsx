@@ -19,7 +19,7 @@ export default function Home() {
   if (isLoading) {
     return (
       <main
-        className="min-h-screen bg-primary p-6 flex justify-center items-center"
+        className="min-h-screen p-6 flex justify-center items-center"
         style={{ backgroundColor: "var(--bg-primary)" }}
       >
         <Loading />
