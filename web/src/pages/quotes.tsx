@@ -9,7 +9,7 @@ import Link from "next/link";
 import { Loading } from "@/components/loading";
 import { Error } from "@/components/error";
 
-export default function Home() {
+export default function Quotes() {
   const { data, isLoading, isError } = useQuotesData();
 
   const handleRetry = (): void => {
