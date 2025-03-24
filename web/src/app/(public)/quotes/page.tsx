@@ -19,7 +19,7 @@ export default function Quotes() {
   if (isLoading) {
     return (
       <main
-        className="min-h-screen p-6 flex justify-center items-center"
+        className="p-6 flex justify-center items-center"
         style={{ backgroundColor: "var(--bg-primary)" }}
       >
         <Loading />
@@ -30,7 +30,7 @@ export default function Quotes() {
   if (isError || !data) {
     return (
       <main
-        className="min-h-screen p-6 flex justify-center items-center"
+        className="p-6 flex justify-center items-center"
         style={{ backgroundColor: "var(--bg-primary)" }}
       >
         <Error onRetry={handleRetry} />
@@ -40,7 +40,7 @@ export default function Quotes() {
 
   return (
     <main
-      className="min-h-screen bg-primary p-6 overflow-y-auto"
+      className="bg-primary px-6 md:px-[280px] pt-10 pb-4 overflow-y-auto"
       style={{ backgroundColor: "var(--bg-primary)" }}
     >
       <CurrencyProvider>

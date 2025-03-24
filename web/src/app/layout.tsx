@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Saira } from "next/font/google";
 import { Header } from "@/components/header";
+import { Footer } from "@/components/footer";
 
 export const metadata: Metadata = {
   title: "Currenzy",
@@ -19,10 +20,27 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={saira.className} style={{ paddingTop: "80px" }}>
+    <html lang="pt-BR">
+      <body
+        className={saira.className}
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          minHeight: "100vh",
+          paddingTop: "80px",
+        }}
+      >
         <Header />
-        {children}
+        <main
+          style={{
+            flex: 1,
+            paddingBottom: "20px",
+            backgroundColor: "var(--bg-primary)",
+          }}
+        >
+          {children}
+        </main>
+        <Footer />
       </body>
     </html>
   );

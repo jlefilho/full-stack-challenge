@@ -1,7 +1,9 @@
+import Link from "next/link";
+
 export default function About() {
   return (
     <main
-      className="min-h-screen bg-primary px-6 md:px-[280px] py-10 overflow-y-auto"
+      className="bg-primary px-6 md:px-[280px] pt-10 pb-4 overflow-y-auto"
       style={{ backgroundColor: "var(--bg-primary)" }}
     >
       <div className="mx-auto px-4">
@@ -37,12 +39,12 @@ export default function About() {
           <p>
             Todos os dados de cotações são coletados de plataformas financeiras,
             utilizando nossa{" "}
-            <a
+            <Link
               href="https://api-currenzy.onrender.com"
               className="text-blue-500"
             >
               API
-            </a>
+            </Link>
             . Os dados são processados a cada 15 segundos para garantir que as
             informações exibidas estejam sempre atualizadas.
           </p>
