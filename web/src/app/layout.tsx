@@ -7,6 +7,9 @@ import { Footer } from "@/components/footer";
 export const metadata: Metadata = {
   title: "Currenzy",
   description: "Acompanhe cotações de dólar em tempo real",
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 const saira = Saira({
