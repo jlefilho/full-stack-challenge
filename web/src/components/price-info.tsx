@@ -1,4 +1,3 @@
-import { useCurrency } from "@/contexts/currency-context";
 import { formatNumberToBRL } from "@/utils/formatNumber";
 import { FaArrowAltCircleDown, FaArrowAltCircleUp } from "react-icons/fa";
 
@@ -9,21 +8,8 @@ interface PriceInfoProps {
 }
 
 export function PriceInfo({ type, price, slippage }: PriceInfoProps) {
-  const { isUSDToBRL } = useCurrency();
-
-  let priceToShow = 0;
-  let slippageToShow = 0;
-
-  if (price) {
-    priceToShow = isUSDToBRL ? price : 1 / price;
-  }
-
-  if (slippage) {
-    slippageToShow = isUSDToBRL ? slippage : -slippage;
-  }
-
   const priceColorClass =
-    slippageToShow > 0 ? "text-green-600" : "text-red-600";
+    slippage && slippage > 0 ? "text-green-600" : "text-red-600";
 
   return (
     <div className="flex flex-col sm:flex-row justify-between items-center">
@@ -37,18 +23,16 @@ export function PriceInfo({ type, price, slippage }: PriceInfoProps) {
         } font-semibold`}
       >
         <span
-          className="text-xs font-normal"
+          className="text-xs font-normal mr-1"
           style={{ color: "var(--text-dark)" }}
         >
-          {isUSDToBRL ? "1 USD = " : "1 BRL = "}
+          1 USD =
         </span>
         <span className={`font-bold ${slippage ? priceColorClass : ""}`}>
-          {isUSDToBRL
-            ? `R$${formatNumberToBRL(priceToShow)}`
-            : `$${priceToShow.toFixed(3)} `}
+          R${formatNumberToBRL(price)}
         </span>
         {slippage && (
-          <span className="text-xs ml-1">({slippageToShow.toFixed(3)}%)</span>
+          <span className="text-xs ml-1">({slippage.toFixed(3)}%)</span>
         )}
       </div>
     </div>
