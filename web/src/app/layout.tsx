@@ -3,6 +3,7 @@ import "./globals.css";
 import { Saira } from "next/font/google";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
+import { FilterProvider } from "@/contexts/filter-context";
 
 export const metadata: Metadata = {
   title: "Currenzy",
@@ -33,17 +34,19 @@ export default function RootLayout({
           paddingTop: "80px",
         }}
       >
-        <Header />
-        <main
-          style={{
-            flex: 1,
-            paddingBottom: "20px",
-            backgroundColor: "var(--bg-primary)",
-          }}
-        >
-          {children}
-        </main>
-        <Footer />
+        <FilterProvider>
+          <Header />
+          <main
+            style={{
+              flex: 1,
+              paddingBottom: "20px",
+              backgroundColor: "var(--bg-primary)",
+            }}
+          >
+            {children}
+          </main>
+          <Footer />
+        </FilterProvider>
       </body>
     </html>
   );
